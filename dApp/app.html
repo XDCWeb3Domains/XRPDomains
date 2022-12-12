@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8"> 
+<meta http-equiv="encoding" content="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lobibox@1.2.7/css/lobibox.css" />
+<link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/web3fonts@1.0.0/css/fontawesome.min.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/web3fonts@1.0.0/css/all.min.css" />
+<link type="text/css" rel="stylesheet" href="/fonts/Poppins/fonts.css" />
+<link type="text/css" rel="stylesheet" href="/lib/jQuery/PluginStack/Wow-js/animate.css" />
+<link type="text/css" rel="stylesheet" href="/css/custom.css?v=100" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.js"></script>
+<script src="https://unpkg.com/xrpl@2.2.3/build/xrpl-latest-min.js"></script>
+<script src="https://xumm.app/assets/cdn/xumm-oauth2-pkce.min.js?v=2.4.0"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootbox@5.5.2/bootbox.all.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-notify@3.1.3/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/paginationjs@2.1.5/dist/pagination.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@multiavatar/multiavatar/multiavatar.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-lazy@1.7.11/jquery.lazy.min.js"></script>
+<script type="text/javascript" src="/lib/jQuery/PluginStack/Wow-js/wow.min.js"></script>
+<script type="text/javascript" src="/js/custom.js?v=7"></script>
+<script type="text/javascript" src="/networks.js?v=40"></script>
+<link rel="icon" href="/favicon/favicon-96x96.png?v=3" />
+<link rel="shortcut icon" href="/favicon/favicon-96x96.png?v=3" />
+<meta name="description" property="description" content="XRP Web3 Domains - Journey into the world of Web3 - Buy once use forever" />
+<title>XRP Web3 Identity</title>
+<style>
+.warp-banner{
+	padding-top: 200px!important;
+}
+.warp-search{
+	margin: 0 auto;
+}
+.warp-result .text-success{
+	color: #0c8dc6!important;
+}
+.btn-search{
+	border-color: none!important;
+	background-color: #0c8dc6!important;
+}
+.btn-search:hover {
+	border-color: #FFF!important;
+}
+.btn-search:active {
+	border-color: #FFF!important;
+	background-color: #0c8dc6!important;
+}
+.btn-connect-wallet:hover{background: #0c8dc6; border-color: #FFF;}
+.warp-result .btn-success {
+	background: linear-gradient(to right, #0c8dc6 0%, #52b25c 100%) !important;
+	border: none;
+}
+.result-details .btn-success {
+	background: linear-gradient(to right, #0c8dc6 0%, #52b25c 100%);
+	border: none;
+}
+.btn-outline-success
+{
+	border: 0px!important;
+    color: #ffffff!important;
+    background: linear-gradient(to right, #0c8dc6 0%, #52b25c 100%);
+	background-size: 250% auto;
+	padding: 8px 10px;
+}
+.loading {color: #0c8dc6!important;}
+
+.btn-outline-success:hover
+{
+	background-position: right center;
+	color: #FFF!important;
+}
+
+.bootbox .btn-success{
+	background-color: #0c8dc6!important;
+	border-color: #0c8dc6!important;
+}
+.warp-result{
+	padding-top: 20px;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.tld
+{
+	display:none;
+}
+.select-chain {
+	font-size: 13px;
+}
+
+.btn-connect-wallet:hover{
+	color: #FFF!important;
+}
+
+.select-chain .dropdown-toggle{
+	color: #FFF;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid #DDD;
+	padding: 16px 20px;
+	background: rgb(0 0 0 / 10%);
+	vertical-align: middle;
+}
+.select-chain .dropdown-menu{
+	top: 12px!important;
+}
+
+.select-chain .dropdown-menu:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -7px;
+    left: 9px;
+}
+
+.select-chain .dropdown-menu:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    position: absolute;
+    top: -6px;
+    left: 10px;
+}
+
+.select-chain .list-item
+{
+	display: block;
+	padding: 12px;
+	border-bottom: 1px solid #DDD;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.select-chain .list-item-active
+{
+	font-weight: bold;
+}
+
+.select-chain .list-item:last-child
+{
+	border-bottom: none;
+}
+
+.chain-logo{
+	width: 20px; 
+	margin-right: 10px;
+	margin-top: -5px;
+}
+
+.result-search {
+	background-color: rgb(255, 255, 255);
+	overflow: hidden;
+	border-radius: 6px;
+	-webkit-box-align: center;
+	align-items: center;
+	padding: 30px;
+	margin: 0 auto;
+}
+.result-details .alert-info{
+	background: #FFF;
+}
+.pricelist{
+	max-width: 400px;
+	margin: 0 auto;
+}
+.preview {
+	position: relative;
+	background: linear-gradient(45deg, #a061d0, #30d5c2);
+	border-radius: 5px;
+	
+}
+.preview .domainhere{
+	position: absolute;
+    top: 50%;
+    left: 50px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 25px;
+	word-wrap: break-word;
+}
+.result-select {
+	padding:10px;
+	margin: 0px auto;
+}
+
+.domain-item {
+	display: inline-block;
+	padding: 15px;
+	border: 1px solid #DDD;
+	border-radius: 10px;
+	margin: 7px;
+	text-align: center;
+	cursor: pointer;
+}
+.result-select .active{
+	border: 2px solid #CCC!important;
+}
+.domain-item-name{
+	font-weight: bold;
+	font-size: 20px;
+	display: block;
+}
+
+.domain-item-status{
+	font-weight: bold;
+	display: block;
+	font-size: 20px;
+}
+
+
+.result-common{
+	text-align: left;
+}
+.result-details{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.result-logo{
+	margin-right: 7px;
+}
+.result-logo img{
+	max-width: 40px;
+	margin-top: -5px;
+}
+.result-domain{
+    font-weight: 700;
+    font-size: 18px;
+}
+.result-status{
+	float: right;
+	margin-top: 5px;
+}
+.result-status span{
+	margin-left:7px;
+}
+.result-statustext{
+	font-weight: bold;
+}
+.pricelistwarp{
+	background: #FFF;
+}
+.result-price{
+	padding:15px; font-size: 20px; font-weight: bold;
+}
+.pricelist{
+	font-size: 15px;
+}
+.level-item{
+	display: flex;
+    align-items: center;
+    padding-bottom: 7px;
+    justify-content: space-between;
+}
+.level-price {
+	font-weight: bold;
+}
+.warp-mydomains{
+	margin-top: 50px;
+    margin: 0 auto;
+}
+
+.mydomains{
+	margin: 0 auto;
+	border-radius: 6px;
+	margin: 0 auto;
+	padding: 30px;
+	background-color: rgb(255, 255, 255);
+}
+
+.mydomain-show{
+	margin-top:20px;
+	display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.mydomain-paging{
+	margin-top: 30px;
+	border-top: 1px solid #DDD;
+	padding-top: 10px;
+
+}
+
+.mydomain-name
+{
+	font-weight: bold; 
+	padding: 10px;
+	word-break: break-all;
+	line-height: 1.2;
+	margin-top: 5px;
+}
+
+.mydomain-item{
+	background-color: rgb(255, 255, 255);
+	border: 1px solid #ced4da;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+	padding:10px;
+	text-align: center;
+}
+
+.warp-setavatar
+{
+	margin:20px;
+}
+
+.warp-setavatar .setavatar
+{
+	width: 500px; height: 500px;
+	background: linear-gradient(45deg, #a061d0, #30d5c2);
+	background-position: center center;
+	position: relative;
+	margin: 0 auto;
+}
+.warp-setavatar .setdomain{
+	position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+    word-wrap: break-word;
+	z-index: 3;
+}
+
+.warp-setavatar .setselectimage{
+	position: absolute;
+	bottom: 20px;
+    right: 20px;
+	z-index: 2;
+}
+
+.warp-setavatar .setyoupic{
+	position: absolute;
+	top: 0;
+    left: 0;
+	z-index: 1;
+	width: 500px;
+	height: 500px;
+	overflow: hidden;
+}
+
+
+.warp-setavatar .btn-file{
+	position: relative;
+	padding-top: 15px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.warp-setavatar input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;			
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+}
+.warp-setavatar .btn-confirm-avatar{
+	width: 500px; 
+	margin-top: 20px; 
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-dialog {
+        width: 600px;
+        font-size: 14px;
+    }
+
+.modal-custom .modal-dialog {
+        width: 500px;
+        font-size: 13px;
+    }
+
+div[data-notify="container"] { 
+    width: auto; 
+	margin-left: 30px;
+}
+
+div[data-notify="container"] { 
+    width: auto; 
+	margin-left: 30px;
+}
+
+.emoji-picker{
+	border: 0;
+    padding-right: 20px;
+	line-height: 50px;
+    cursor: pointer;
+	position: relative;
+	color: #FFF; 
+}
+
+.emoji-load{
+	position: absolute;
+	top: 35px;
+	right: 0px;
+	z-index: 9999;
+}
+
+.to_reverse {
+	margin-bottom: 10px;
+	border: 1px solid #DDD;
+	padding: 5px;
+}
+.nftpreview {
+	padding: 10px;
+	border: 1px solid #DDD;
+	border-radius: 5px;
+}
+.nftpreview img {
+	width: 100px;
+	margin-right: 7px;
+}
+
+.nftpreview span {
+	font-weight: bold
+}
+
+.wallet-ui .modal-content {
+        background: #FFF;
+        box-shadow: 0 8px 20px rgb(0 0 0 / 60%);
+    }
+
+    .wallet-ui .list-group {
+        margin: 20px 0 20px 0;
+        padding: 0;
+        width: 100%;
+        display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		list-style: none;
+    }
+
+    .wallet-ui .wallet-adapter-item {
+        border: 1px solid #DDD;
+        border-radius: 6px;
+        color: #000;
+        cursor: pointer;
+        align-items: center;
+        padding: 60px 0;
+        margin-right: 10px;
+		margin-bottom: 7px;
+    }
+
+        .wallet-ui .wallet-adapter-item:hover {
+            background-image: linear-gradient(rgba(0,0,0,.15) 0 0);
+        }
+
+        .wallet-ui .wallet-adapter-item span {
+            font-weight: bold;
+        }
+
+        .wallet-ui .wallet-adapter-item img {
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+        }
+
+
+</style>
+</head>
+<body>
+
+<div class="warp-header">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="header-left col-md-1 col-sm-1 col-xs-12">
+				<div class="logo">
+					<a href="/"><img src="/logo/logo.png?=10"/></a>
+				</div>
+			</div>
+			<div class="header-right col-md-11 col-sm-11 col-xs-12 text-right">
+				<div class="menu">
+					<div class="menu-close"><i class="fal fa-times-circle"></i></div>
+					<ul class="nav">
+						<li class="nav-item"><a href="/">Home</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="click-menu">
+		<i class="fal fa-bars"></i>
+	</div>
+</div>
+
+<div class="warp-banner text-center banner-page" style="position:relative;">
+	<div class="warp-search">
+		<div class="banner-nofix" style="z-index: 99; position: relative;">
+			<div class="container">
+				<div class="" style="margin-bottom: 20px;">
+						<span class="dropdown select-chain" style='display:none;'>
+							<span class="dropdown-toggle" data-toggle="dropdown" href="#"><span class='selected-chain'>Select Chain</span></span>
+							<ul class="dropdown-menu">
+							</ul>
+						</span>
+						<span class="btn btn-lg btn-custom btn-big btn-connect-wallet" style="cursor:pointer; text-transform:none;">
+							<i class="fas fa-spinner fa-spin" style="display:none;margin-right:5px;"></i> Connect Wallet
+						</span>
+						<input type="hidden" class="currentAddress" />
+				</div>
+				<div class="alert alert-danger text-center not-support" style="display:none; max-width: 800px; margin:0 auto; margin-bottom: 20px;" role="alert">
+				  <span>
+					Network is not currently supported. Please click button below.<br/>
+					<span style="cursor: pointer; margin-top: 10px;" class="btn btn-outline-danger btn-changenetwork">Change Metamask</span>
+				  </span>
+				</div>
+				<div class="warp-form-search" style='display:none; max-width: 800px; margin: 0 auto;'>
+					<div class='text-right'>
+						<span class='emoji-picker'>
+							<span class=''>Emoji Picker 🖐</span>
+							<span class='emoji-load' style='display: none;'><emoji-picker></emoji-picker></span>
+						</span>
+					</div>
+					<div class="form-search input-group">
+						<input type="text" class="form-control form-control-lg txtdomain" placeholder="Search for a domain"/>
+						<div class="input-group-append">
+							<span class='tld'>.</span>
+							<span class="btn btn-default btn-success btn-search" style="cursor:pointer;"><i class="fas fa-spinner fa-spin" style="display:none;margin-right:5px;"></i>Search <i class="far fa-arrow-right"></i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="warp-result">
+			<div class="container">
+				<div class="result-search" style="display:none;">
+					<div class='result-select'></div>
+					<div class="result-common" style='display: none;'>
+							<span class='result-logo'></span>
+							<span class='result-domain'></span>
+							<span class='result-status'>
+								<span class='result-chain' style='display:none;'></span>
+								<span class='result-statustext'></span>
+							</span>
+					</div>
+					<div class="result-details" style="display:none;">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class=''>
+									<div class='pricelist'></div>
+									<div class='pricelistwarp'>
+										<div class='result-price text-center'></div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control youraddress" placeholder="To (Recipient)" />
+								</div>
+								<span style="cursor: pointer; padding:15px; font-weight: bold; font-size: 17px;" class='btn btn-block btn-lg btn-success btn-buy'><i class="fas fa-spinner fa-spin" style="display:none;margin-right:5px;"></i>Mint Now </span>
+							</div>
+							<div style='display:none;' class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+								<div class='preview'>
+									<img src='/NFTDomains/bg.png' />
+									<div class="domainhere"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		   </div>
+		</div>
+		<div class="warp-mydomains" style="display:none;">
+			<div class="container">
+				<div class="mydomains">
+					<h4 class='strong' style="color: #000; margin-bottom: 15px; padding: 5px;">You have <span class='total-domains'></span> domains</h4>
+					<div class='form-group filter well' style='border-radius: 7px; margin-bottom: 10px; padding: 10px; background: #e3e3e3b3; font-size: 11px;'>
+							<div class='form-inline'>
+								<input type='text' style="margin: 5px;" placeholder="Enter keyword" class='form-control keyword' />
+								<select class="form-control ddl-domain-type" style="margin: 5px;">
+										<option value=''>- Domain Type -</option>
+										<option value='domain'>Normal domain</option>
+										<option value='emoji'>Emoji domain</option>
+										<option value='subdomain'>Sub domain</option>
+								</select>
+								<select class="form-control ddl-domain-length" style="margin: 5px;">
+										<option value=''>- Length -</option>
+										<option value='1'>01</option>
+										<option value='2'>02</option>
+										<option value='3'>03</option>
+										<option value='4'>04</option>
+										<option value='5'>05</option>
+										<option value='6'>06</option>
+										<option value='7'>07</option>
+										<option value='8'>08</option>
+										<option value='9'>09</option>
+										<option value='10'>10</option>
+										<option value='11'>11</option>
+										<option value='12'>12</option>
+										<option value='13'>13</option>
+										<option value='14'>14</option>
+										<option value='15'>15</option>
+										<option value='16'>16</option>
+										<option value='17'>17</option>
+										<option value='18'>18</option>
+										<option value='19'>19</option>
+										<option value='20'>20</option>
+										<option value='21'>21</option>
+										<option value='22'>22</option>
+										<option value='23'>23</option>
+										<option value='24'>24</option>
+										<option value='25'>25</option>
+										<option value='26'>26</option>
+										<option value='27'>27</option>
+										<option value='28'>28</option>
+										<option value='29'>29</option>
+										<option value='30'>30</option>
+								</select>
+								<select class="form-control ddl-tlds" style="margin: 5px;">
+										<option value=''>- Top Level Domain -</option>
+										<option value='xrp'>.xrp</option>
+								</select>
+								<span style="cursor:pointer; margin: 5px;" class='btn btn-sm btn-outline-success btn-mydomain-search'>Search</span>
+								<span style="cursor:pointer; margin: 5px;" class='btn btn-sm btn-outline-success btn-mydomain-refresh'>Refresh</span>
+								<span style="cursor:pointer; margin: 5px;" class='result-count text-right'></span>
+							</div>
+						</div>
+						
+						<div class='loading text-center' style='display:none; color:#CCC; margin-top: 20px;'><i class='fas fa-4x fa-spinner fa-spin'></i></div>
+					<div class='mydomain-show'></div>
+					<div class='mydomain-paging' style="visibility: hidden"><div class='paging'></div></div>
+					<div class='mydomain-loadmore'><span style="cursor:pointer; padding: 10px 20px; border: 2px solid #DDD; border-radius: 5px; color: #333;" class='btn btn-mydomain-next'>Load more</span></div>
+				</div>
+			</div>
+	  </div>
+	</div>
+	<img src="/images/square-warning.png" class="img-position img-position-01" alt=""/>
+	<img src="/images/square-success.png" class="img-position img-position-02 spin-anything" alt=""/>
+</div>
+<div class="warp-footer">
+	<div class="container text-center">
+		<div class="warp-social">
+			<a href="https://twitter.com/XDCDomains" target="_blank" class="wow fadeInUp" data-wow-delay="0.3s"><i class="fab fa-twitter"></i></a>
+			<a href="https://github.com/XDCWeb3Domains/TrustEVM" target="_blank" class="wow fadeInUp" data-wow-delay="0.5s"><i class="fab fa-github"></i></a>
+		</div>
+	</div>
+	<div class="warp-copyright text-center">
+		Copyright © 2022 Ripple Web3 Identity - A member of <a href='https://xdcdomains.xyz/'>XDCDomains.xyz</a>
+	</div>
+</div>
+<script type="text/javascript">
+
+	var currentNetwork;
+	
+	var contractFirst;
+	
+	var currentAddress;
+	
+	var domainReverse = '';
+	
+	var clickenble = true;
+	
+	var isConnection = false;
+	
+	var connector;
+	
+	var balance;
+	
+	var auth = new XummPkce('1c7dfba7-aadd-4b03-bafb-ca5c8f84bb4f');
+    
+	var sdk = null;
+	
+	var client;
+	
+	window.addEventListener('load', async () => {
+		//await connect();
+    });
+	
+	
+	$(document).on('click', '.btn-connect-wallet', async() => {
+		auth.authorize().then(connect).catch(e => {});
+    });
+	
+		
+	auth.on('error', error => {
+        console.log('error', error)
+    });
+
+    auth.on('success', async () => {
+        console.log('success');
+        auth.state().then(state => {
+          if (state.me) {
+             console.log('success, me', JSON.stringify(state.me));
+          }
+        });
+    });
+
+	$(document).on('keyup', '.txtdomain', function(){
+		var str = $(this).val().trim().toLowerCase();
+		str = fixDomain(str);
+		$(this).val(str);
+    });
+	
+	$('.emoji-picker').click(function (e) {
+         e.stopPropagation();
+         $('.emoji-load').slideToggle();
+    });
+	
+	$('.emoji-load').click(function (e) {
+         e.stopPropagation();            
+    });
+	
+    $(document).click(function (e) {            
+         $('.emoji-load').slideUp();
+    });
+	
+	const disconnect =  async () => {
+		auth.logout();
+		location.reload();
+	};
+
+	const connect =  async (authorized) => {
+	
+		if (isConnection == true){
+			return;
+		}
+		
+		$('.not-support').hide();
+		
+		$('.btn-connect-wallet i.fa-spin').show();
+		
+		$('.btn-connect-wallet').attr('disabled', true);
+		
+		var chainId = 0;
+
+		try {
+		
+			  currentNetwork = getObjects(networks, "chainId", chainId)[0];
+			  
+			  if (currentNetwork == null || currentNetwork.visible == false)
+			  {
+					$('.not-support').show();
+					notify('alert-danger', '<span class="text-danger">The network is not currently supported</span>');
+					return;
+			  }
+			  
+			  notify('alert-success', 'Successfully connected your wallet');
+			   
+			  $('.not-support').hide();
+			  
+			  currentAddress = authorized.me.sub;
+			  
+			  sdk = authorized.sdk;
+			  
+			  client = new xrpl.Client(currentNetwork.rpcUrls[0]);
+				
+			  await client.connect();
+				
+			  var _balance = (await client.getXrpBalance(currentAddress));
+			  
+			  balance = parseFloat(_balance).toFixed(3);
+			  
+			  // check reverseOf
+			  try{
+				//domainReverse = await contractFirst.methods.reverseOf(currentAddress).call();
+			  }catch{}
+			  
+			  
+			  var text = domainReverse;
+			  
+			  if (domainReverse == '')
+			  {
+				  for (let i = 0; i < 6; i++) {
+						text += currentAddress[i];
+				  }
+							
+				  text += '...'
+				  
+				  for (let i = currentAddress.length - 4; i < currentAddress.length; i++) {
+					text += currentAddress[i];
+				  }
+			  }
+
+			  text += ' (' + balance + ' ' + currentNetwork.nativeCurrency.symbol + ')';
+					
+			  text += " <i class='fas fa-copy btn-copy' title='Copy address to clipboard' style='cursor:pointer; margin-left:5px;'></i>";
+			  text += " <i class='fas fa-sign-out btn-disconnect' title='Disconnect' style='cursor:pointer; margin-left:5px;'></i>";
+					
+			  $('.btn-connect-wallet').html(text).addClass('wallet-connected').prop('disabled', true).css('cursor','default');
+			  
+			  $('.btn-connect-wallet  i.fa-spin').hide();
+			  
+			  $('.warp-form-search').show();
+			  
+			  preInit();
+			 
+			  isConnection = true;
+			  
+		} catch (err) {
+			notify('alert-danger', '<span class="text-danger">' + err.toString() + '</span>');
+			
+			$('.btn-connect-wallet i.fa-spin').hide();
+		
+			$('.btn-connect-wallet').removeAttr('disabled');
+		}
+	};
+	
+	
+	const searchDomainTLD = async (domain) => {
+		
+		var isBuy = false;
+		
+		var tlds = [".xrp"];
+		
+		var temp = '';
+		
+		var domainselected = '';
+		
+		var tldselected = '';
+		
+		for (i = 0; i < tlds.length; i++) {
+		
+			var tld = tlds[i];
+			
+			var owner = '';
+			
+			var isV1 = false;
+			
+			var fulldomain = fullDomain(domain, tld);
+			
+			// check owner;
+
+			var status = 'Unavailable';
+		
+			var css = 'text-danger';
+			
+			var icon = 'fa-ban';
+			
+			if (owner == '')
+			{
+				status = 'Available';
+				css = 'text-success';
+				icon = 'fa-check-circle';
+				if  (domainselected == '') 
+				{
+					domainselected = domain;
+					tldselected = tld;
+					isBuy = true;
+				}
+			}
+			
+			var tmpOwner = "<span style='font-size: 10px; color: #333; font-weight: normal'>" + owner + "</span>";
+			temp += "<div data-domain='" + domain + "' data-tld='" + tld + "' class='domain-item " + css + "'><span class='domain-item-name'>" + fulldomain + "</span>" + tmpOwner;
+			temp += "<span class='domain-item-status'><i class='fas " + icon + "'></i></span></div>";
+		}
+		
+		$('.result-select').html(temp);
+		
+		$('.result-search').show();
+		
+		$('.result-details').hide();
+			
+		if (isBuy == true && domainselected !== '' && tldselected !== '')
+		{
+
+			checkBuy(domainselected, tldselected);
+		}
+	};
+	
+	const checkBuy = async (domain, tld) =>
+	{
+			var _char = '5+ chars ';
+			
+			var _length =  domain.length;
+			
+			var price = 0;
+			
+			var price5char = 10;
+			
+			var price4char = price5char * 6;
+			
+			var price3char =  price5char * 30;
+			
+			var price2char = price5char * 200;
+			
+			if (_length == 2)
+			{
+				price = price2char
+				_char = '2 chars ';
+			}
+			
+			if (_length == 3)
+			{
+				price = price3char
+				_char = '3 chars ';
+			}
+			if (_length == 4)
+			{
+				price = price4char
+				_char = '4 chars ';
+			}
+			if (_length >= 5)
+			{
+				price = price5char;
+			}
+			  
+			var fulldomain = fullDomain(domain, tld);
+			
+			//var pricelist = '<ul class="list-group"><li class="level-item"><span class="level-label">2 characters</span><span class="level-price">' + price2char + ' ' + currentNetwork.nativeCurrency.symbol + '</span></li>';
+			var pricelist = '<ul class="list-group">';
+			pricelist += '<li class="level-item"><span class="level-label">2 characters</span><span class="level-price">' + price2char + ' ' + currentNetwork.nativeCurrency.symbol + '</span></li>';
+			pricelist += '<li class="level-item"><span class="level-label">3 characters</span><span class="level-price">' + price3char + ' ' + currentNetwork.nativeCurrency.symbol + '</span></li>';
+			pricelist += '<li class="level-item"><span class="level-label">4 characters</span><span class="level-price">' + price4char + ' ' + currentNetwork.nativeCurrency.symbol + '</span></li>';
+			pricelist += '<li class="level-item"><span class="level-label">5+ characters</span><span class="level-price">' + price5char  + ' ' + currentNetwork.nativeCurrency.symbol + '</span></li></ul>';
+			
+			$('.pricelist').html(pricelist);
+			
+			var currentprice = '' + fulldomain + '<br/>List Price: ' + price + ' ' + currentNetwork.nativeCurrency.symbol
+			
+			$('.result-price').html(currentprice);
+			
+			$('.btn-buy').attr('data-domain', domain).attr('data-tld', tld);
+			
+			$('.youraddress').val(currentAddress);
+			
+			$('.result-details').show();
+	};
+	
+	const buyDomain = async (domain) => 
+	{
+		var owner = '';
+		
+		var tld = currentNetwork.tld;
+		
+		var _domain = $('.btn-buy').attr('data-domain');
+		
+		var _tld = $('.btn-buy').attr('data-tld');
+
+		if (_domain !== '')
+		{
+			domain = _domain;
+		}
+		
+		if (_tld !== '')
+		{
+			tld = _tld;
+		}
+				
+		var fulldomain = fullDomain(domain, tld);
+
+		var price;
+		
+		var _length =  domain.length;
+		
+		var price5char = 10;
+			
+		var price4char = price5char * 6;
+			
+		var price3char =  price5char * 30;
+			
+		var price2char = price5char * 200;
+			
+		if (_length == 2)
+		{
+			price = price2char
+			_char = '2 chars ';
+		}
+			
+		if (_length == 3)
+		{
+			price = price3char
+			_char = '3 chars ';
+		}
+		if (_length == 4)
+		{
+			price = price4char
+			_char = '4 chars ';
+		}
+		if (_length >= 5)
+		{
+			price = price5char;
+		}
+		
+		var dialog = bootbox.dialog({
+			title: 'Mint your domain',
+			message: '<p class="text-center">Please wait while we do something... and do not close the browser.<br/><br/> <i class="fas fa-4x fa-spinner fa-spin"></i></p>',
+			closeButton: true,
+			size: 'large',
+			onHide: function(e) {
+				//myDomains(currentAddress, true);
+			} 
+		});
+		
+        var payload = {
+          txjson: {
+            TransactionType: 'Payment',
+            Destination: 'rNVmHZSYJQxhrdGBE5jnkgfr8AY3pRpNKV',
+            Amount: xrpl.xrpToDrops(price) // Drops, so: 0.001337 XRP
+          }
+        }
+
+        sdk.payload.createAndSubscribe(payload, function (payloadEvent) {
+            if (typeof payloadEvent.data.signed !== 'undefined') {
+              // What we return here will be the resolved value of the `resolved` property
+              return payloadEvent.data
+            }
+          }).then(function ({created, resolved}) {
+				//alert(created.pushed
+				//  ? 'Now check Xumm, there should be a push notification + sign request in your event list waiting for you ;)'
+				//  : 'Now check Xumm, there should be a sign request in your event list waiting for you ;) (This would have been pushed, but it seems you did not grant Xumm the push permission)'
+				//)
+			
+				dialog.init(function(){
+					setTimeout(function(){
+						dialog.find('.bootbox-body').html('<p class="text-center">Now check Xumm, there should be a push notification and sign request in your event list waiting for you ... and do not close the browser.<br/><br/> <i class="fas fa-4x fa-spinner fa-spin"></i></p>');
+					}, 500);
+				});
+
+            resolved.then(function (payloadOutcome) {
+				
+				 //alert('Payload ' + (payloadOutcome.signed ? 'signed (TX Hash: ' + payloadOutcome.txid + ')' : 'rejected') + ', see the browser console for more info');
+				 if (payloadOutcome.signed){
+						 var explorer = currentNetwork.blockExplorerUrls[0] + "transactions/" + payloadOutcome.txid;
+						 dialog.init(function(){
+									setTimeout(function(){
+										dialog.find('.bootbox-body').html('<p class="text-center" style="color:green;">Congratulations on your successful purchase<br/><br/><a class="btn btn-outline-secondary" href="' + explorer + '" target="_blank">View Your Transaction</a></p>');
+									}, 3000);
+						  });
+				 }
+				 else{
+					dialog.init(function(){
+						setTimeout(function(){
+							dialog.find('.bootbox-body').html('<p class="text-center mb-0" style="color:red;">rejected</p>');
+						}, 2000);
+					});
+				 }
+			
+              //console.log(payloadOutcome)
+            });
+          }).catch(function (payloadError) {
+			dialog.init(function(){
+						setTimeout(function(){
+							dialog.find('.bootbox-body').html('<p class="text-center mb-0" style="color:red;">Mint failed, ' + e.message + '</p>');
+						}, 2000);
+					});
+          })
+	};
+
+	var dataSource = [];
+
+	var balance = 0;
+	
+	
+	const myDomainLoad = async (address, data) => {		
+		if (data.length > 0){
+		
+			$('.loading').hide();
+			
+			$('.warp-mydomains').show();
+			
+			const d = new Date();
+			var t = d.getTime();
+			
+			$.each(data, function(index, obj){
+				var tokenUrl = currentNetwork.blockExplorerUrls[0] + 'token/' + currentNetwork.contactAddress + '?a=' + obj.tokenId + '#inventory';
+
+				var name = obj.domain;
+				var image = '';
+				if (obj.image !== undefined){
+					image = obj.image;
+				}
+				var btnlbl = 'Set Primary';
+				var isremove = "false";
+				if (name == domainReverse){
+					btnlbl = "Remove Primary";
+					isremove = "true";
+				}
+				
+				var temp = "<div class='mydomain-item'>";
+				temp += "<div class=''><a target='_blank' style='text-decoration: none;' href='" + tokenUrl + "'><img class='domain-image lazy' data-src='" + image + "' src='/images/spinner.gif?v=3' data-domain='" + name + "' style='width: 100%;' /><p style='margin-top: 10px;'>" + name + "</p></a></div>";
+				//temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "'title='Remove NFT Avatar' class='btn btn-remove-avatar'><i class='fas fa-trash-alt'></i></div>";
+				temp += "<div class='mydomain-item-tokenId' style='display:none;'>tokenId: " + obj.tokenId + "</div>";
+				temp += "<div style='cursor:pointer; margin-top: 5px;' data-domain='" + obj.tokenId + "' data-remove='" + isremove + "' class='btn btn-sm btn-outline-success btn-set-reverse'>" + btnlbl + "</div>";
+				temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-set-avatar'>Set Avatar</div>";
+				temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-send'>Send Domain</div>";
+				var num = name.match(/\./g).length;
+				if (num == 1){
+					//temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-subdomain'>Create Subdomain</div>";
+				}
+				temp += "</div>";
+				
+				$('.mydomain-show').append(temp);
+				
+				if (image == ''){
+					var endpoint = '/api/nftdomains/metadata/' + name;
+					$.getJSON(endpoint, function(result) {   
+						var image = result.image + '?t='+ t;
+						$('.domain-image[data-domain="' + name + '"]').attr('data-src', image);
+						obj.image = image;
+					});
+				}
+			});
+			
+			setTimeout(function()
+			{
+				 $('.lazy').Lazy({
+					scrollDirection: 'both',
+					effect: 'fadeIn',
+					visibleOnly: true,
+					removeAttribute: true
+				});
+			}, 1500);
+		}
+	};
+
+	const myDomains = async (address, refresh) => {
+	
+		$('.warp-mydomains').show();
+		
+		$('.mydomain-show').html('');
+		
+		$('.result-count').html('');
+		
+		$('.loading').show();
+		
+		if (refresh == true){
+			dataSource = [];
+			dataSourceNew = [];
+			isSearch = false;
+			$('.keyword').val('');
+			$('.ddl-characters-type').val('');
+			$('.ddl-tlds').val('');
+			$('.mydomain-show').html('');
+			$('.total-domains').html('');
+		}
+		
+		if (dataSource.length == 0)
+		{
+			var results = await client.request({
+				method: "account_nfts",
+				account: currentAddress
+			});
+			
+			var nfts = results.result.account_nfts;
+			
+			balance = nfts.length;
+		
+			$('.total-domains').html(balance);
+		
+			$.each(nfts, function(i, obj){
+					var uri = xrpl.convertHexToString(obj.URI);
+					var domain = URI(uri).pathname.replace('/','');
+					const tld = domain.split('.').pop();
+					var obj = new Object();
+					obj.owner = currentAddress;
+					obj.tokenId = obj.NFTokenID;
+					obj.domain = domain;
+					obj.domainless = domain.replace('.' + tld, '');
+					obj.tld = tld;
+					dataSource.push(obj);
+			});
+		}
+		
+		var dataSourceNew = dataSource;
+			
+		var keyword = $('.keyword').val().trim().toLowerCase();
+		
+		var domain_type = $('.ddl-domain-type').val();
+		
+		var domain_length = $('.ddl-domain-length').val();
+		
+		var tlds = $('.ddl-tlds').val();
+		
+		if (keyword.length > 0)
+		{
+			
+			var dataSourceTemp = [];
+			$.each(dataSourceNew, function(i, obj) {
+				var result = obj.domainless.indexOf(keyword);
+				if (result >= 0){
+					dataSourceTemp.push(obj);
+				}
+			});
+			
+			dataSourceNew = dataSourceTemp;
+		}
+		
+		if (domain_type.length > 0)
+		{
+			const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi;
+			var dataSourceTemp = [];
+			$.each(dataSourceNew, function(i, obj) {
+				var isOK = false;
+				switch(domain_type) {
+				 case 'domain':
+					var isEmoji = emojiRegex.test(obj.domainless);
+					var num = obj.domain.match(/\./g).length;
+					if (num == 1 && isEmoji == false){
+						isOK = true;
+					}
+					break;
+				 case 'emoji':
+					isOK = emojiRegex.test(obj.domainless);
+					break;
+				case 'subdomain':
+					var num = obj.domain.match(/\./g).length;
+					if (num > 1){
+						isOK = true;
+					}
+					break;
+				  default:
+
+				}
+				
+				if (isOK == true){
+					dataSourceTemp.push(obj);
+				}
+			});
+			
+			dataSourceNew = dataSourceTemp;
+		}
+		
+		if (domain_length > 0){
+			var dataSourceTemp = [];
+			$.each(dataSourceNew, function(i, obj) {
+				if (obj.domainless.length == domain_length){
+					dataSourceTemp.push(obj);
+				}
+			});
+			
+			dataSourceNew = dataSourceTemp;
+		}
+		
+		if (tlds.length > 0)
+		{
+			var dataSourceTemp = [];
+			$.each(dataSourceNew, function(i, obj) {
+				if (tlds == obj.tld){
+					dataSourceTemp.push(obj);
+				}
+			});
+			
+			dataSourceNew = dataSourceTemp;
+		}
+		
+		$('.result-count').html(dataSourceNew.length + ' results');
+		
+		var pageSize = 20;
+		
+		var totalNumber = dataSourceNew.length;
+		
+		var container = $('.paging');
+		if (totalNumber > 0){
+			container.pagination({
+				dataSource: dataSourceNew,
+				totalNumber: totalNumber,
+				pageSize: pageSize,
+				showPrevious: true,
+				showNext: true,
+				className: 'paginationjs-pages justify-content-center',
+				showGoInput: true,
+				showGoButton: true,
+				callback: function(data, pagination) {
+					myDomainLoad(address, data);
+				}
+			});
+			
+		}
+		else{
+		
+			$('.loading').hide();
+			
+			$('.warp-mydomains').show();
+			
+			$('.mydomain-show').html('<p class="text-center">No items found for this search</p>');
+		}
+		
+		$(document).on('scroll', onScroll);
+		
+		function onScroll(event){  
+			var next = $('.btn-mydomain-next');
+			var scrollPos = $(document).scrollTop() + 300;       
+			var position = next.position().top - 300;   
+			if (position <= scrollPos) {
+				container.pagination('next');
+			}
+		}
+	};
+	
+	const preInit = () => 
+	{
+		 $(".txtdomain").focus();
+		
+		 $(".txtdomain").EnableInsertAtCaret();
+		
+		 document.querySelector('emoji-picker').addEventListener('emoji-click', event => {
+			//$('.txtdomain').val(event.detail.emoji.unicode);
+			var emoji = event.detail.emoji.unicode;
+			var domain = $(".txtdomain").val();
+			if (domain == ''){
+				$(".txtdomain").val(emoji);
+				$(".txtdomain").focus();
+			}
+			else{
+				InsertAtCaret(emoji);
+			}
+		 });
+		 
+		 $(document).on('click', '.btn-copy', () => {
+				copyToClipboard(currentAddress);
+				$('.btn-copy').removeClass('fa-copy').addClass('fa-check-circle');
+				
+				setTimeout(function(){
+					$('.btn-copy').removeClass('fa-check-circle').addClass('fa-copy');
+				}, 500);
+		  });
+		  
+		  $(document).on('click', '.btn-disconnect', () => {
+				disconnect();
+		  });
+		  
+		  //btn-disconnect
+		  var q = getUrlParameter('q').trim().toLowerCase();
+		  if (q !== '')
+		  {
+			 if (q.length < 2)
+			 {
+				 $('.result-search').hide();
+				 notify('danger', '<span class="text-danger">Domain requires at least 2 characters</span>');
+			 }
+			 else
+			 {
+				 $('.txtdomain').val(q);
+				 var domain = fixDomain(q);
+				 searchDomainTLD(domain);
+			 }
+		  }
+
+		  $(document).on('click', '.btn-search', async function(){
+				var domain = $('.txtdomain').val().trim().toLowerCase();
+				if (domain == ''){
+					$('.result-search').hide();
+					return;
+				}
+
+				if (domain.length < 2){
+					$('.result-search').hide();
+					notify('danger', '<span class="text-danger">Domain requires at least 2 characters</span>');
+					return;
+				}
+				if (domain.length > 60){
+					$('.result-search').hide();
+					notify('danger', '<span class="text-danger">Domain max length</span>');
+					return;
+				}
+				
+				$('.btn-search i').show();
+				
+				domain = fixDomain(domain);
+				
+				await searchDomainTLD(domain);
+				
+				$('.btn-search i').hide();
+
+		  });
+		  
+		  $(document).on('click', '.btn-buy', async function(e){
+				e.preventDefault();
+				var domain = $('.txtdomain').val().trim().toLowerCase();
+				if (domain == ''){
+					$('.result-search').hide();
+					return;
+				}
+				
+				if (domain.length < 2)
+				{
+					$('.result-search').hide();
+					notify('danger', '<span class="text-danger">Domain requires at least 2 characters</span>');
+					return;
+				}
+				
+				if (clickenble == false)
+				{
+					return;
+				}
+				
+				clickenble = false;
+				
+				$('.btn-buy i').show();
+				
+				$(this).attr('disabled', false);
+				
+				domain = fixDomain(domain);
+				
+				await buyDomain(domain);
+				
+				setTimeout(function(){
+					clickenble = true;
+					$('.btn-buy i').hide();
+					$('.btn-buy').attr('disabled', true);
+				}, 300);
+		  });
+		  
+		  $(document).on('click', '.domain-item', async function(e){
+		  
+				if ($(this).hasClass('text-success') == false)
+				{
+					return;
+				}
+				
+				if ($(this).hasClass('active') == true)
+				{
+					return;
+				}
+				
+				$('.domain-item').removeClass('active');
+				
+				var domain = $(this).attr('data-domain');
+				
+				var tld = $(this).attr('data-tld');
+				
+				if (domain !== '' && tld !== ''){
+				
+					await checkBuy(domain, tld);
+					
+					$(this).addClass('active');
+				}
+		  });
+		  
+		  $(document).on('click', '.btn-mydomain-refresh', async function(e){
+				await myDomains(currentAddress, true);
+		  });
+		  
+		  $(document).on('click', '.btn-mydomain-search', async function(e){
+				await myDomains(currentAddress, false);
+		  });
+		  
+		  myDomains(currentAddress, true);
+    };
+	
+	
+	const notify = function (type, msg) {
+		$.notify({
+			message: '<span class="small">' + msg + '</span>',
+			type: type
+		}, {
+			delay: 7000, placement: {
+
+				from: "bottom",
+				align: "center"
+			}
+		});
+	};
+	
+	var URI = function(href) {
+	   var l = document.createElement("a");
+	   l.href = href;
+	   return l;
+	};
+			
+	
+	function copyToClipboard(text) {
+	  var $temp = $("<input>");
+	  $("body").append($temp);
+	  $temp.val(text).select();
+	  document.execCommand("copy");
+	  $temp.remove();
+	}
+	
+	function fullDomain(domain, tld)
+	{
+		domain = fixDomain(domain) + tld;
+		return domain;
+	}
+	
+	function fixDomain(domain)
+	{
+		const domainfix = domain.replace(/\./g, '').replace(/\s+/g, '').replace(/[`~!@#$%^&*()|+\=?;:'",.<>\{\}\[\]\\\/]/gi, '').replace(/,/g, '');
+		return domainfix;
+	}
+</script>
+</body>
+</html>

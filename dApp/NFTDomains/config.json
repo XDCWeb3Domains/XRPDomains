@@ -1,0 +1,15 @@
+{
+			"background":"/NFTDomains/bg.png",
+			"color1": "#6000e7",
+			"color2": "#00148d",
+			"name": "Ripple Web3 Identity",
+			"symbol": "EVMDID",
+			"host": "https://app.xrpdomains.xyz",
+			"external_url": "https://xrpdomains.xyz/",
+			"position": "center",
+			"chain_name": "XRPL",
+			"text_x":0,
+			"text_y":60,
+			"tlds": "xrp",
+			"description":"Ripple Web3 Identity - Building Identity on blockchain with .xrp domains - buy once use forever"
+		}
