@@ -33,6 +33,9 @@
 <meta name="description" property="description" content="XRP Web3 Domains - Journey into the world of Web3 - Buy once use forever" />
 <title>XRP Web3 Identity</title>
 <style>
+.warp-header{
+	position: absolute;
+}
 .warp-banner{
 	padding-top: 200px!important;
 }
@@ -683,6 +686,8 @@ div[data-notify="container"] {
 	
 	var balance;
 	
+	var owner = 'rN3bCxmEbR3Ua8YSh274WCtWmLHi8LsBBY';
+	
 	var auth = new XummPkce('1c7dfba7-aadd-4b03-bafb-ca5c8f84bb4f');
     
 	var sdk = null;
@@ -695,7 +700,11 @@ div[data-notify="container"] {
 	
 	
 	$(document).on('click', '.btn-connect-wallet', async() => {
-		auth.authorize().then(connect).catch(e => {});
+		auth.authorize().then(
+			async function(authorized) {
+				await connect(authorized);
+			}
+		).catch(e => {});
     });
 	
 		
@@ -1008,12 +1017,19 @@ div[data-notify="container"] {
 			} 
 		});
 		
-        var payload = {
+       
+		var _uri = 'https://xrpdomains.xyz/api/nftdomains/metadata/' + fulldomain;
+		 
+		var payload = {
           txjson: {
-            TransactionType: 'Payment',
-            Destination: 'rNVmHZSYJQxhrdGBE5jnkgfr8AY3pRpNKV',
-            Amount: xrpl.xrpToDrops(price) // Drops, so: 0.001337 XRP
-          }
+			"TransactionType": "NFTokenMint",
+			"Account": currentAddress,
+			"URI": xrpl.convertStringToHex(_uri),
+			"Flags": parseInt(8),
+			"TransferFee": parseInt(0),
+			"NFTokenTaxon": 999999, //Required, but if you have no use for it, set to zero.
+			"Amount": xrpl.xrpToDrops(price)
+		 }
         }
 
         sdk.payload.createAndSubscribe(payload, function (payloadEvent) {
@@ -1094,11 +1110,11 @@ div[data-notify="container"] {
 				}
 				
 				var temp = "<div class='mydomain-item'>";
-				temp += "<div class=''><a target='_blank' style='text-decoration: none;' href='" + tokenUrl + "'><img class='domain-image lazy' data-src='" + image + "' src='/images/spinner.gif?v=3' data-domain='" + name + "' style='width: 100%;' /><p style='margin-top: 10px;'>" + name + "</p></a></div>";
+				temp += "<div class=''><a target='_blank' style='text-decoration: none;' href='#'><img class='domain-image lazy' data-src='" + image + "' src='/images/spinner.gif?v=3' data-domain='" + name + "' style='width: 100%;' /><p class='domain-name' data-domain='" + name + "' style='margin-top: 10px;'>" + name + "</p></a></div>";
 				//temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "'title='Remove NFT Avatar' class='btn btn-remove-avatar'><i class='fas fa-trash-alt'></i></div>";
 				temp += "<div class='mydomain-item-tokenId' style='display:none;'>tokenId: " + obj.tokenId + "</div>";
 				temp += "<div style='cursor:pointer; margin-top: 5px;' data-domain='" + obj.tokenId + "' data-remove='" + isremove + "' class='btn btn-sm btn-outline-success btn-set-reverse'>" + btnlbl + "</div>";
-				temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-set-avatar'>Set Avatar</div>";
+				//temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-set-avatar'>Set Avatar</div>";
 				temp += "<div style='cursor:pointer; margin-top: 5px;' data-obj='" + JSON.stringify(obj) + "' class='btn btn-sm btn-outline-success btn-send'>Send Domain</div>";
 				var num = name.match(/\./g).length;
 				if (num == 1){
@@ -1109,13 +1125,16 @@ div[data-notify="container"] {
 				$('.mydomain-show').append(temp);
 				
 				if (image == ''){
-					var endpoint = '/api/nftdomains/metadata/' + name;
+					
+				}
+				
+				var endpoint = '/api/nftdomains/metadata/' + name;
 					$.getJSON(endpoint, function(result) {   
 						var image = result.image + '?t='+ t;
 						$('.domain-image[data-domain="' + name + '"]').attr('data-src', image);
+						$('.domain-name[data-domain="' + name + '"]').text(result.name);
 						obj.image = image;
-					});
-				}
+				});
 			});
 			
 			setTimeout(function()
@@ -1163,18 +1182,23 @@ div[data-notify="container"] {
 			balance = nfts.length;
 		
 			$('.total-domains').html(balance);
+			
+			var i = 1;
 		
 			$.each(nfts, function(i, obj){
 					var uri = xrpl.convertHexToString(obj.URI);
-					var domain = URI(uri).pathname.replace('/','');
-					const tld = domain.split('.').pop();
-					var obj = new Object();
-					obj.owner = currentAddress;
-					obj.tokenId = obj.NFTokenID;
-					obj.domain = domain;
-					obj.domainless = domain.replace('.' + tld, '');
-					obj.tld = tld;
-					dataSource.push(obj);
+					if (uri.indexOf('api/nftdomains/metadata/') > 0){
+						var domain = URI(uri).pathname.replace('/','').replace('api/nftdomains/metadata/','');
+						const tld = domain.split('.').pop();
+						var obj = new Object();
+						obj.owner = currentAddress;
+						obj.tokenId = obj.NFTokenID;
+						obj.domain = domain;
+						obj.domainless = domain.replace('.' + tld, '');
+						obj.tld = tld;
+						dataSource.push(obj);
+						i++;
+					}
 			});
 		}
 		
@@ -1302,6 +1326,29 @@ div[data-notify="container"] {
 				container.pagination('next');
 			}
 		}
+	};
+	
+	const mint = async(domain) => {
+		  
+		
+		  const secret = 'sEd7GMaYiFAMvA8DCSusSE97h3fzzGq';
+		
+		  const wallet = xrpl.Wallet.fromSeed(secret);
+		  
+		  var uri = 'https://xrpdomains.xyz/api/nftdomains/metadata/' + domain;
+		  
+		  const transactionBlob = {
+			"TransactionType": "NFTokenMint",
+			"Account": currentAddress,
+			"URI": xrpl.convertStringToHex(uri),
+			"Flags": parseInt(8),
+			"TransferFee": parseInt(0),
+			"NFTokenTaxon": 0 //Required, but if you have no use for it, set to zero.
+		  }
+
+		  // ----------------------------------------------------- Submit signed blob 
+		  const tx = await client.submitAndWait(transactionBlob, { wallet: wallet} );
+		 
 	};
 	
 	const preInit = () => 
